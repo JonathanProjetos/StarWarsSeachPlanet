@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import MyContext from '../context/MyContext';
 
 function StarWars() {
-  const { data } = useContext(MyContext);
-  const filterResidents = data.filter((dados) => delete dados.residents);
+  const { search, handleSearch, filterData } = useContext(MyContext);
 
   const headTable = [
     'name',
@@ -23,6 +22,17 @@ function StarWars() {
 
   return (
     <form>
+      <label htmlFor="1">
+        ProJeto StarWars:
+        <input
+          id="1"
+          type="text"
+          value={ search }
+          name="search"
+          onChange={ handleSearch }
+          data-testid="name-filter"
+        />
+      </label>
       <table>
         <thead>
           <tr>
@@ -32,7 +42,7 @@ function StarWars() {
           </tr>
         </thead>
         <tbody>
-          {filterResidents.map((dadosApi) => (
+          {filterData.map((dadosApi) => (
             <tr key={ dadosApi.name }>
               <td>{dadosApi.name}</td>
               <td>{dadosApi.rotation_period}</td>

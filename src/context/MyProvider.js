@@ -4,6 +4,8 @@ import MyContext from './MyContext';
 
 function MyProvider({ children }) {
   const [data, setData] = useState([]);
+  const [filterData, setFilterData] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const fetchApiStarWars = async () => {
@@ -12,12 +14,28 @@ function MyProvider({ children }) {
       const results = await request.json();
       const resultApi = await results.results;
       setData(resultApi);
+      setFilterData(resultApi);
     };
     fetchApiStarWars();
   }, []);
 
+  const filterResidents = data.filter((dados) => delete dados.residents);
+
+  useEffect(() => {
+    const filterSearch = filterResidents
+      .filter((searchName) => searchName.name.toLowerCase().includes(search));
+    setFilterData(filterSearch);
+  }, [search]);
+
+  const handleSearch = ({ target }) => {
+    setSearch(target.value.toLowerCase());
+  };
+
   const context = {
-    data,
+    filterData,
+    search,
+    handleSearch,
+    filterResidents,
   };
 
   return (
