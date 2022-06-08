@@ -1,5 +1,9 @@
 import React, { useContext } from 'react';
 import MyContext from '../context/MyContext';
+import SelectColuna from '../components/SelectColuna';
+import SelectOperador from '../components/SelectOperador';
+import InputNumber from '../components/InputNumber';
+import ButtonFiltrar from '../components/ButtonFiltrar';
 
 function StarWars() {
   const { search, handleSearch, filterData } = useContext(MyContext);
@@ -33,6 +37,10 @@ function StarWars() {
           data-testid="name-filter"
         />
       </label>
+      <SelectColuna />
+      <SelectOperador />
+      <InputNumber />
+      <ButtonFiltrar />
       <table>
         <thead>
           <tr>

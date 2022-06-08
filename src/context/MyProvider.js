@@ -6,6 +6,12 @@ function MyProvider({ children }) {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [search, setSearch] = useState('');
+  const [select, setSelect] = useState({
+    coluna: 'population',
+    operador: 'maior que',
+    inputNumber: 0,
+  });
+  // const [filterNumber, setFilterNumber] = useState([]);
 
   useEffect(() => {
     const fetchApiStarWars = async () => {
@@ -31,11 +37,36 @@ function MyProvider({ children }) {
     setSearch(target.value.toLowerCase());
   };
 
+  const handleSelect = ({ target }) => {
+    const { name, value } = target;
+    setSelect({
+      ...select,
+      [name]: value,
+    });
+  };
+
+  const handleClickFiltrar = () => {
+    const { coluna, inputNumber, operador } = select;
+    const filterNumberColum = data.filter((planeta) => {
+      if (operador === 'maior que') {
+        return Number(planeta[coluna]) > Number(inputNumber);
+      }
+      if (operador === 'menor que') {
+        return Number(planeta[coluna]) < Number(inputNumber);
+      }
+
+      return Number(planeta[coluna]) === Number(inputNumber);
+    });
+    setFilterData(filterNumberColum);
+  };
+
   const context = {
     filterData,
     search,
+    select,
     handleSearch,
-    filterResidents,
+    handleSelect,
+    handleClickFiltrar,
   };
 
   return (
