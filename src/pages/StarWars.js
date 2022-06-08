@@ -7,6 +7,7 @@ import ButtonFiltrar from '../components/ButtonFiltrar';
 
 function StarWars() {
   const { search, handleSearch, filterData, filterNumber } = useContext(MyContext);
+  console.log(filterNumber);
 
   const headTable = [
     'name',

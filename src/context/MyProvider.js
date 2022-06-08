@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import MyContext from './MyContext';
 
+const listColun = [
+  'population',
+  'orbital_period',
+  'diameter',
+  'rotation_period',
+  'surface_water',
+];
 function MyProvider({ children }) {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
@@ -12,6 +19,7 @@ function MyProvider({ children }) {
     inputNumber: 0,
   });
   const [filterNumber, setFilterNumber] = useState([]);
+  const [listColuna, setlistaColuna] = useState(listColun);
 
   useEffect(() => {
     const fetchApiStarWars = async () => {
@@ -59,8 +67,10 @@ function MyProvider({ children }) {
     });
     setFilterData(filterNumberColum);
     setFilterNumber((prev) => ([...prev, select]));
+    const selectFltrados = listColuna.filter((dados) => dados !== coluna);
+    setlistaColuna(selectFltrados);
     setSelect({
-      coluna: 'population',
+      coluna: selectFltrados[0],
       operador: 'maior que',
       inputNumber: 0,
     });
@@ -74,6 +84,7 @@ function MyProvider({ children }) {
     handleSelect,
     handleClickFiltrar,
     filterNumber,
+    listColuna,
   };
 
   return (

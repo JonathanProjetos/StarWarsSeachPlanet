@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import MyContext from '../context/MyContext';
 
 function SelectColuna() {
-  const { select, handleSelect } = useContext(MyContext);
+  const { select, handleSelect, listColuna } = useContext(MyContext);
   const { coluna } = select;
+
   return (
     <div>
       <label htmlFor="1">
@@ -15,11 +16,9 @@ function SelectColuna() {
           data-testid="column-filter"
           onChange={ handleSelect }
         >
-          <option>population</option>
-          <option>orbital_period</option>
-          <option>diameter</option>
-          <option>rotation_period</option>
-          <option>surface_water</option>
+          {listColuna.map((lista, index) => (
+            <option key={ index }>{lista}</option>
+          ))}
         </select>
       </label>
     </div>
