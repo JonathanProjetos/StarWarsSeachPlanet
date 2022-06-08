@@ -6,7 +6,7 @@ import InputNumber from '../components/InputNumber';
 import ButtonFiltrar from '../components/ButtonFiltrar';
 
 function StarWars() {
-  const { search, handleSearch, filterData } = useContext(MyContext);
+  const { search, handleSearch, filterData, filterNumber } = useContext(MyContext);
 
   const headTable = [
     'name',
@@ -41,6 +41,15 @@ function StarWars() {
       <SelectOperador />
       <InputNumber />
       <ButtonFiltrar />
+      <div>
+        {filterNumber.map((selectFilter, index) => (
+          <p key={ index }>
+            {`${selectFilter.coluna} 
+                ${selectFilter.operador} 
+                ${selectFilter.inputNumber}`}
+          </p>
+        ))}
+      </div>
       <table>
         <thead>
           <tr>

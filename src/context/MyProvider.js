@@ -11,7 +11,7 @@ function MyProvider({ children }) {
     operador: 'maior que',
     inputNumber: 0,
   });
-  // const [filterNumber, setFilterNumber] = useState([]);
+  const [filterNumber, setFilterNumber] = useState([]);
 
   useEffect(() => {
     const fetchApiStarWars = async () => {
@@ -47,7 +47,7 @@ function MyProvider({ children }) {
 
   const handleClickFiltrar = () => {
     const { coluna, inputNumber, operador } = select;
-    const filterNumberColum = data.filter((planeta) => {
+    const filterNumberColum = filterData.filter((planeta) => {
       if (operador === 'maior que') {
         return Number(planeta[coluna]) > Number(inputNumber);
       }
@@ -58,6 +58,12 @@ function MyProvider({ children }) {
       return Number(planeta[coluna]) === Number(inputNumber);
     });
     setFilterData(filterNumberColum);
+    setFilterNumber((prev) => ([...prev, select]));
+    setSelect({
+      coluna: 'population',
+      operador: 'maior que',
+      inputNumber: 0,
+    });
   };
 
   const context = {
@@ -67,6 +73,7 @@ function MyProvider({ children }) {
     handleSearch,
     handleSelect,
     handleClickFiltrar,
+    filterNumber,
   };
 
   return (
