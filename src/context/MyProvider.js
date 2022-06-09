@@ -38,8 +38,22 @@ function MyProvider({ children }) {
   useEffect(() => {
     const filterSearch = filterResidents
       .filter((searchName) => searchName.name.toLowerCase().includes(search));
-    setFilterData(filterSearch);
-  }, [search]);
+
+    const arrayFilter = filterNumber.reduce((acc, cur) => acc.filter((planet) => {
+      switch (cur.operador) {
+      case 'maior que':
+        return Number(planet[cur.coluna]) > Number(cur.inputNumber);
+      case 'menor que':
+        return Number(planet[cur.coluna]) < Number(cur.inputNumber);
+      case 'igual a':
+        return Number(planet[cur.coluna]) === Number(cur.inputNumber);
+      default:
+        return true;
+      }
+    }), filterSearch);
+
+    setFilterData(arrayFilter);
+  }, [search, filterNumber]);
 
   const handleSearch = ({ target }) => {
     setSearch(target.value.toLowerCase());
@@ -67,14 +81,38 @@ function MyProvider({ children }) {
     });
     setFilterData(filterNumberColum);
     setFilterNumber((prev) => ([...prev, select]));
-    const selectFltrados = listColuna.filter((dados) => dados !== coluna);
-    setlistaColuna(selectFltrados);
+    const selectFiltrados = listColuna.filter((dados) => dados !== coluna);
+    setlistaColuna(selectFiltrados);
     setSelect({
-      coluna: selectFltrados[0],
+      coluna: selectFiltrados[0],
       operador: 'maior que',
       inputNumber: 0,
     });
   };
+
+  const handleRemove = ({ target }) => {
+    const filterRemove = filterNumber.filter((iten) => iten.coluna !== target.name);
+    setFilterNumber(filterRemove);
+  };
+
+  const removeAllFilters = () => {
+    const resetFilter = data;
+    // const removeAllFilter = filterNumber.filter((iten) => iten === target.name);
+    setFilterNumber([]);
+    setFilterData(resetFilter);
+    setlistaColuna(listColun);
+  };
+
+  useEffect(() => {
+    const newColun = listColun.reduce((acc, cur) => {
+      if (filterNumber.some((f) => f.coluna === cur)) {
+        return acc;
+      }
+      acc.push(cur);
+      return acc;
+    }, []);
+    setlistaColuna(newColun);
+  }, [filterNumber]);
 
   const context = {
     filterData,
@@ -85,6 +123,8 @@ function MyProvider({ children }) {
     handleClickFiltrar,
     filterNumber,
     listColuna,
+    handleRemove,
+    removeAllFilters,
   };
 
   return (

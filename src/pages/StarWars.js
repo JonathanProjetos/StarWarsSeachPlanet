@@ -4,9 +4,16 @@ import SelectColuna from '../components/SelectColuna';
 import SelectOperador from '../components/SelectOperador';
 import InputNumber from '../components/InputNumber';
 import ButtonFiltrar from '../components/ButtonFiltrar';
+import ButtonRemoveAllFilters from '../components/ButtonRemoveAllFilters';
 
 function StarWars() {
-  const { search, handleSearch, filterData, filterNumber } = useContext(MyContext);
+  const {
+    search,
+    handleSearch,
+    filterData,
+    filterNumber,
+    handleRemove,
+  } = useContext(MyContext);
   console.log(filterNumber);
 
   const headTable = [
@@ -42,12 +49,23 @@ function StarWars() {
       <SelectOperador />
       <InputNumber />
       <ButtonFiltrar />
+      <ButtonRemoveAllFilters />
       <div>
         {filterNumber.map((selectFilter, index) => (
-          <p key={ index }>
+          <p
+            key={ index }
+            data-testid="filter"
+          >
             {`${selectFilter.coluna} 
                 ${selectFilter.operador} 
-                ${selectFilter.inputNumber}`}
+                ${selectFilter.inputNumber} `}
+            <button
+              name={ selectFilter.coluna }
+              type="button"
+              onClick={ handleRemove }
+            >
+              Remove
+            </button>
           </p>
         ))}
       </div>
