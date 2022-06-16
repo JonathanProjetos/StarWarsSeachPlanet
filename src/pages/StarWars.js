@@ -9,6 +9,7 @@ import SelectOrderSort from '../components/SelectOrderSort';
 import CheckBoxSort from '../components/CheckBoxSort';
 import { StyleInput, StyleTabela, StyleImg, StyleForm } from '../Style/Tabela';
 import logo from '../Style/logo.png';
+import '../Style/style2.css';
 
 function StarWars() {
   const {
@@ -39,15 +40,16 @@ function StarWars() {
     <StyleForm>
       <StyleImg>
         <div>
-          <img src={ logo } alt="logo starwars" />
+          <img className="focus-in-contract-bck" src={ logo } alt="logo starwars" />
         </div>
+        <h1 className="focus-in-contract-bck">Planet Search</h1>
         <div>
           <StyleInput
             type="text"
             value={ search }
             name="search"
             onChange={ handleSearch }
-            placeholder="Pesquise um Planeta"
+            placeholder="Pesquise"
             data-testid="name-filter"
           />
         </div>

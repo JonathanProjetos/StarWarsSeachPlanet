@@ -49,7 +49,13 @@ export const StyleImg = styled.div`
   img{
     width: 1000px;
     height: 400px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+  }
+
+  h1{
+    margin-bottom: 60px;
+    font-size: 60px;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   input{
@@ -75,6 +81,7 @@ export const StyleForm = styled.form`
   select{
     border: none;
     border-bottom: 1px solid white;
+    font-size: 15px;
       :focus{
         outline: none !important;
         border: hidden;
@@ -87,6 +94,11 @@ export const StyleForm = styled.form`
   button{
     padding: 10px;
     border-radius: 5px;
+    :hover{
+      color: yellow;
+      transition: 1s;
+      border: 2px solid yellow;
+    }
   }
 
   input::-webkit-inner-spin-button {
