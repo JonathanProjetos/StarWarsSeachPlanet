@@ -27,15 +27,83 @@ export const StyleTabela = styled.form`
     :hover{
       border-bottom: 1px solid yellow;
       color: yellow;
-      transition: 1.5s;
+      transition: 1s;
     }
   }
   
-  tr{
-  }
 `;
 
 export const StyleInput = styled.input`
+   border: none;
+    border-bottom: 1px solid white;
+    font-size: 20px;
+`;
+
+export const StyleImg = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+  img{
+    width: 1000px;
+    height: 400px;
+    margin-bottom: 50px;
+  }
+
+  input{
+    margin-bottom: 60px;
+  }
+
+`;
+
+export const StyleForm = styled.form`
+
+  input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  select{
+    border: none;
+    border-bottom: 1px solid white;
+      :focus{
+        outline: none !important;
+        border: hidden;
+        border-bottom: 1px solid yellow;
+        color: yellow;
+        transition: 1.5s;
+      }
+  }
+
+  button{
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  }
 
 
+  input{
+    border: none;
+    border-bottom: 1px solid white;
+      :focus{
+        outline: none !important;
+        border: none;
+        border-bottom: 1px solid yellow;
+        color: yellow;
+        transition: 1.5s;
+      }
+  }
 `;

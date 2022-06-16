@@ -5,6 +5,10 @@ import SelectOperador from '../components/SelectOperador';
 import InputNumber from '../components/InputNumber';
 import ButtonFiltrar from '../components/ButtonFiltrar';
 import ButtonRemoveAllFilters from '../components/ButtonRemoveAllFilters';
+import SelectOrderSort from '../components/SelectOrderSort';
+import CheckBoxSort from '../components/CheckBoxSort';
+import { StyleInput, StyleTabela, StyleImg, StyleForm } from '../Style/Tabela';
+import logo from '../Style/logo.png';
 
 function StarWars() {
   const {
@@ -14,7 +18,6 @@ function StarWars() {
     filterNumber,
     handleRemove,
   } = useContext(MyContext);
-  console.log(filterNumber);
 
   const headTable = [
     'name',
@@ -33,23 +36,31 @@ function StarWars() {
   ];
 
   return (
-    <form>
-      <label htmlFor="1">
-        ProJeto StarWars:
-        <input
-          id="1"
-          type="text"
-          value={ search }
-          name="search"
-          onChange={ handleSearch }
-          data-testid="name-filter"
-        />
-      </label>
-      <SelectColuna />
-      <SelectOperador />
-      <InputNumber />
-      <ButtonFiltrar />
-      <ButtonRemoveAllFilters />
+    <StyleForm>
+      <StyleImg>
+        <div>
+          <img src={ logo } alt="logo starwars" />
+        </div>
+        <div>
+          <StyleInput
+            type="text"
+            value={ search }
+            name="search"
+            onChange={ handleSearch }
+            placeholder="Pesquise um Planeta"
+            data-testid="name-filter"
+          />
+        </div>
+      </StyleImg>
+      <div>
+        <SelectColuna />
+        <SelectOperador />
+        <InputNumber />
+        <ButtonFiltrar />
+        <ButtonRemoveAllFilters />
+        <SelectOrderSort />
+        <CheckBoxSort />
+      </div>
       <div>
         {filterNumber.map((selectFilter, index) => (
           <p
@@ -69,7 +80,7 @@ function StarWars() {
           </p>
         ))}
       </div>
-      <table>
+      <StyleTabela>
         <thead>
           <tr>
             {headTable.map((titulo) => (
@@ -96,8 +107,8 @@ function StarWars() {
             </tr>
           ))}
         </tbody>
-      </table>
-    </form>
+      </StyleTabela>
+    </StyleForm>
   );
 }
 

@@ -13,13 +13,18 @@ function MyProvider({ children }) {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [search, setSearch] = useState('');
+  const [filterNumber, setFilterNumber] = useState([]);
+  const [listColuna, setlistaColuna] = useState(listColun);
   const [select, setSelect] = useState({
     coluna: 'population',
     operador: 'maior que',
     inputNumber: 0,
   });
-  const [filterNumber, setFilterNumber] = useState([]);
-  const [listColuna, setlistaColuna] = useState(listColun);
+  const [orderSort, setOrderSort] = useState({
+    filterAscendente: null,
+    filterDescedente: null,
+    sortColun: 'population',
+  });
 
   useEffect(() => {
     const fetchApiStarWars = async () => {
@@ -114,6 +119,15 @@ function MyProvider({ children }) {
     setlistaColuna(newColun);
   }, [filterNumber]);
 
+  const handleChangeFilterSort = ({ target }) => {
+    const { name } = target;
+    const value = target.type === 'radio' ? target.checked : target.value;
+    setOrderSort({
+      ...orderSort,
+      [name]: value,
+    });
+  };
+
   const context = {
     filterData,
     search,
@@ -125,6 +139,9 @@ function MyProvider({ children }) {
     listColuna,
     handleRemove,
     removeAllFilters,
+    listColun,
+    orderSort,
+    handleChangeFilterSort,
   };
 
   return (
