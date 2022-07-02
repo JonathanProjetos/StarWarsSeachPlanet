@@ -4,16 +4,15 @@ import StarWars from './pages/StarWars';
 import MyProvider from './context/MyProvider';
 import './Style/style.css';
 
-const globalStyles = createGlobalStyle;
+const GlobalStyles = createGlobalStyle``;
 
 function App() {
   return (
     <div>
-      <globalStyles>
-        <MyProvider>
-          <StarWars />
-        </MyProvider>
-      </globalStyles>
+      <MyProvider>
+        <GlobalStyles />
+        <StarWars />
+      </MyProvider>
     </div>
   );
 }
