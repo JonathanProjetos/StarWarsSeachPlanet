@@ -1,33 +1,38 @@
 import React, { useContext } from 'react';
 import MyContext from '../context/MyContext';
+import { StyleCheckbox } from '../Style/Tabela';
 
 function CheckBoxSort() {
   const { handleChangeFilterSort, orderSort } = useContext(MyContext);
-  const { filterAscendente, filterDescedente } = orderSort;
+  const { ASC, DESC } = orderSort;
 
   return (
-    <div>
-      <label htmlFor="1">
+    <StyleCheckbox>
+      <label htmlFor="3">
         Ascedente
         <input
-          id="1"
+          id="3"
           type="radio"
           name="filterAscendente"
+          value={ ASC }
           onChange={ handleChangeFilterSort }
-          checked={ filterAscendente }
+          checked={ ASC }
+          data-testid="column-sort-input-asc"
         />
       </label>
-      <label htmlFor="1">
+      <label htmlFor="2">
         Descedente
         <input
-          id="1"
+          id="2"
           type="radio"
           name="filterDescedente"
+          value={ DESC }
           onChange={ handleChangeFilterSort }
-          checked={ filterDescedente }
+          checked={ DESC }
+          data-testid="column-sort-input-desc"
         />
       </label>
-    </div>
+    </StyleCheckbox>
   );
 }
 

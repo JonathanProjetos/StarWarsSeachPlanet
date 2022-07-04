@@ -21,8 +21,8 @@ function MyProvider({ children }) {
     inputNumber: 0,
   });
   const [orderSort, setOrderSort] = useState({
-    filterAscendente: null,
-    filterDescedente: null,
+    ASC: true,
+    DESC: false,
     sortColun: 'population',
   });
 
@@ -32,8 +32,9 @@ function MyProvider({ children }) {
       const request = await fetch(url);
       const results = await request.json();
       const resultApi = await results.results;
-      setData(resultApi);
-      setFilterData(resultApi);
+      const sortApiForName = resultApi.sort((a, b) => a.name.localeCompare(b.name));
+      setData(sortApiForName);
+      setFilterData(sortApiForName);
     };
     fetchApiStarWars();
   }, []);
@@ -126,7 +127,43 @@ function MyProvider({ children }) {
       ...orderSort,
       [name]: value,
     });
+
+    if (target.name === 'filterAscendente' && target.checked === true) {
+      setOrderSort({
+        ...orderSort,
+        DESC: false,
+        ASC: true,
+      });
+    } else if (target.name === 'filterDescedente' && target.checked === true) {
+      setOrderSort({
+        ...orderSort,
+        ASC: false,
+        DESC: true,
+      });
+    }
   };
+
+  const handleClickOrder = () => {
+    const { sortColun, ASC, DESC } = orderSort;
+    console.log(sortColun, ASC, DESC);
+    setOrderSort({
+      ASC,
+      DESC,
+      sortColun,
+    });
+  };
+
+  useEffect(() => {
+    const { sortColun, ASC } = orderSort;
+
+    if (ASC === true) {
+      const OrderAscendente = filterData.sort((a, b) => a[sortColun] - b[sortColun]);
+      console.log('ola');
+      return setFilterData(OrderAscendente);
+    }
+    const orderDescendente = filterData.sort((a, b) => b[sortColun] - a[sortColun]);
+    return setFilterData(orderDescendente);
+  }, [filterData, orderSort]);
 
   const context = {
     filterData,
@@ -142,6 +179,7 @@ function MyProvider({ children }) {
     listColun,
     orderSort,
     handleChangeFilterSort,
+    handleClickOrder,
   };
 
   return (
