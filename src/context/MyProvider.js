@@ -103,7 +103,7 @@ function MyProvider({ children }) {
 
   const removeAllFilters = () => {
     const resetFilter = data;
-    // const removeAllFilter = filterNumber.filter((iten) => iten === target.name);
+
     setFilterNumber([]);
     setFilterData(resetFilter);
     setlistaColuna(listColun);
