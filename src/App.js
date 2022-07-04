@@ -9,11 +9,9 @@ const globalStyles = createGlobalStyle``;
 function App() {
   return (
     <div>
-      <globalStyles>
-        <MyProvider>
-          <StarWars />
-        </MyProvider>
-      </globalStyles>
+      <MyProvider>
+        <StarWars />
+      </MyProvider>
     </div>
   );
 }
