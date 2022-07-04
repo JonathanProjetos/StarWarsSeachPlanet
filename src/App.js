@@ -4,7 +4,7 @@ import StarWars from './pages/StarWars';
 import MyProvider from './context/MyProvider';
 import './Style/style.css';
 
-const globalStyles = createGlobalStyle;
+const globalStyles = createGlobalStyle``;
 
 function App() {
   return (

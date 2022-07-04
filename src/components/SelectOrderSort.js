@@ -14,6 +14,7 @@ function SelectOrderSort() {
           value={ sortColun }
           name="sortColun"
           onChange={ handleChangeFilterSort }
+          data-testid="column-sort"
         >
           {listColun.map((itenList, index) => (
             <option key={ index }>{itenList}</option>
