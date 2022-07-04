@@ -7,6 +7,7 @@ import ButtonFiltrar from '../components/ButtonFiltrar';
 import ButtonRemoveAllFilters from '../components/ButtonRemoveAllFilters';
 import SelectOrderSort from '../components/SelectOrderSort';
 import CheckBoxSort from '../components/CheckBoxSort';
+import ButtonOrder from '../components/ButtonOrder';
 import { StyleInput, StyleTabela, StyleImg, StyleForm } from '../Style/Tabela';
 import logo from '../Style/logo.png';
 import '../Style/style2.css';
@@ -60,6 +61,7 @@ function StarWars() {
         <InputNumber />
         <ButtonFiltrar />
         <ButtonRemoveAllFilters />
+        <ButtonOrder />
         <SelectOrderSort />
         <CheckBoxSort />
       </div>
@@ -93,7 +95,7 @@ function StarWars() {
         <tbody>
           {filterData.map((dadosApi) => (
             <tr key={ dadosApi.name }>
-              <td>{dadosApi.name}</td>
+              <td data-testid={ dadosApi.name }>{dadosApi.name}</td>
               <td>{dadosApi.rotation_period}</td>
               <td>{dadosApi.orbital_period}</td>
               <td>{dadosApi.diameter}</td>
@@ -102,7 +104,21 @@ function StarWars() {
               <td>{dadosApi.terrain}</td>
               <td>{dadosApi.surface_water}</td>
               <td>{dadosApi.population}</td>
-              <td>{dadosApi.films}</td>
+              <td>
+                <span
+                  style={ {
+                    display: 'block',
+                    textOverflow: 'ellipsis',
+                    maxWidth: '37ch',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    background: 'transparent',
+                  } }
+                >
+                  {dadosApi.films}
+                </span>
+
+              </td>
               <td>{dadosApi.created}</td>
               <td>{dadosApi.edited}</td>
               <td>{dadosApi.url}</td>

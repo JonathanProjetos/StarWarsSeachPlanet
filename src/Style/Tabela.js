@@ -119,3 +119,15 @@ export const StyleForm = styled.form`
       }
   }
 `;
+
+export const StyleCheckbox = styled.div`
+  label{
+    margin-right: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    input {
+      background-color: yellow;
+    }
+  }
+`;
