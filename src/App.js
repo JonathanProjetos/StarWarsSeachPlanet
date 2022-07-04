@@ -4,6 +4,7 @@ import StarWars from './pages/StarWars';
 import MyProvider from './context/MyProvider';
 import './Style/style.css';
 
+// eslint-disable-next-line no-unused-vars
 const globalStyles = createGlobalStyle``;
 
 function App() {
