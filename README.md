@@ -1,16 +1,34 @@
 # 🚧 README em construção 🚧
+# My Awesome Project
 
-<!-- Olá, Tryber!
+# Contexto
+Este projeto trata-se de uma aplicação com a tematica de Starwars e faz requisição a uma api para consumir dados dos planetas e suas características, está aplicação possibilita fazer filtros em uma tabela de diversas formas.  
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+## Técnologias usadas
 
-É essencial que você preencha esse documento por conta própria, ok?
+Front-end:
+> Desenvolvido usando: React, Context-Api, CSS3, Style-Component, React-Test-Library
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
+## Instalando Dependências
 
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
+> Frontend
+```bash
+cd src/
+npm install
+npm install --save styled-components
+``` 
+## Executando aplicação
 
--->
+  ```
+* Para rodar o front-end:
+
+  ```
+    cd src/ && npm start
+  ```
+
+## Executando Testes
+
+* Para rodar todos os testes:
+
+  ```
+    npm test
