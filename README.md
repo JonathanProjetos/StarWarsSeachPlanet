@@ -24,10 +24,3 @@ npm install --save styled-components
   ```
     cd src/ && npm start
   ```
-
-## Executando Testes
-
-* Para rodar todos os testes:
-
-  ```
-    npm test
