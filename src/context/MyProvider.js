@@ -28,7 +28,7 @@ function MyProvider({ children }) {
 
   useEffect(() => {
     const fetchApiStarWars = async () => {
-      const url = 'https://swapi-trybe.herokuapp.com/api/planets/';
+      const url = 'https://swapi.dev/api/planets';
       const request = await fetch(url);
       const results = await request.json();
       const resultApi = await results.results;
