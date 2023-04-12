@@ -24,3 +24,6 @@ npm install --save styled-components
   ```
     cd src/ && npm start
   ```
+## Atualizações
+
+ - Alterado o end-point fetch para SWAPI 11/04/2023
