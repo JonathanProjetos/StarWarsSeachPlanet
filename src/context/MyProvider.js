@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import MyContext from './MyContext';
+import fetchApiStarWars from '../services/fetchApiStarWars';
 
 const listColun = [
   'population',
@@ -25,18 +26,15 @@ function MyProvider({ children }) {
     DESC: false,
     sortColun: 'population',
   });
-
+  console.log(data);
   useEffect(() => {
-    const fetchApiStarWars = async () => {
-      const url = 'https://swapi.dev/api/planets';
-      const request = await fetch(url);
-      const results = await request.json();
-      const resultApi = await results.results;
-      const sortApiForName = resultApi.sort((a, b) => a.name.localeCompare(b.name));
+    const filterDataStarWars = async () => {
+      const dataFetch = await fetchApiStarWars();
+      const sortApiForName = dataFetch.sort((a, b) => a.name.localeCompare(b.name));
       setData(sortApiForName);
       setFilterData(sortApiForName);
     };
-    fetchApiStarWars();
+    filterDataStarWars();
   }, []);
 
   const filterResidents = data.filter((dados) => delete dados.residents);
