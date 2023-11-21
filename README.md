@@ -14,12 +14,11 @@ Front-end:
 ```bash
 cd src/
 npm install
-npm install --save styled-components
 ``` 
 ## Executando aplicação
 
   ```
-* Para rodar o front-end:
+* Para executar o front-end:
 
   ```
     cd src/ && npm start
